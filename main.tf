@@ -52,6 +52,10 @@ resource "aws_eks_cluster" "default" {
   role_arn                  = local.eks_service_role_arn
   version                   = var.kubernetes_version
   enabled_cluster_log_types = var.enabled_cluster_log_types
+    
+  timeouts {
+    create = var.create_timeout
+  }
 
   dynamic "encryption_config" {
     for_each = var.cluster_encryption_config_enabled ? [local.cluster_encryption_config] : []

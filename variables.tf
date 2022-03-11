@@ -275,6 +275,12 @@ variable "dummy_kubeapi_server" {
     EOT
 }
 
+variable "create_timeout" {
+  type = string
+  default = "30m"
+  description = "Time string of how long to wait for this EKS cluster to create"
+}
+
 variable "addons" {
   type = list(object({
     addon_name               = string
